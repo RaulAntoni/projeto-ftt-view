@@ -1,0 +1,60 @@
+<!-- Títuto da página -->
+<h3 class="page-title">Listagem de Carros</h3>
+
+<!-- Opções e Filtro -->
+<div class="form-group clearfix">
+  <div class="float-left">
+
+    <!-- Botão para cadastrar -->
+    <button class="btn btn-primary mr-1" routerLink="/carro/novo">
+      <i class="fa fa-plus"></i> Cadastrar
+    </button>
+
+  </div>
+  <div class="float-right">
+    <input type="text" class="form-control" placeholder="Filtrar por nome...">
+  </div>
+</div>
+
+<!-- Lista de mantenedoras -->
+<table class="table table-border table-hover">
+  <!-- Cabeçalho da tabela -->
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Fabricante</th>
+      <th class="text-center">Versão</th>
+      <th class="text-center">Valor</th>
+      <th class="text-right"></th>
+    </tr>
+  </thead>
+  <!-- Corpo da tabela -->
+  <tbody>
+    <tr *ngIf="carros?.length == 0">
+      <td colspan="5" class="text-center"><i class="fa fa-inbox"></i> Nenhum registro encontrado!</td>
+    </tr>
+    <tr *ngFor="let carro of carros">
+      <td>
+        <!-- Botão para visualizar -->
+        <button class="btn btn-link" [routerLink]="['/carro/visualizar', carro.id]">
+          {{ carro.descricao }}
+        </button>
+      </td>
+      <td>{{ carro.fabricante }}</td>
+      <td class="text-center">{{ carro.versao }}</td>
+      <td class="text-center">{{ carro.valor }}</td>
+      <td class="text-right">
+
+        <!-- Botão para editar -->
+        <button class="btn btn-outline-primary btn-sm mr-1" [routerLink]="['/carro/editar', carro.id]">
+          <i class="fa fa-edit"></i>
+        </button>
+
+        <!-- Botão para deletar -->
+        <button class="btn btn-outline-danger btn-sm" (click)="onDelete(carro.id)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,110 @@
+<!-- Título da página -->
+<h3 class="page-title">Dados prinicipais da Garagem</h3>
+
+<!-- Formulário -->
+<form [formGroup]="garagemForm" (submit)="onSave()">
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <!-- Primeira linha -->
+      <div class="row">
+
+        <!-- Nome -->
+        <div class="col-md-6 col-lg-4">
+          <app-field label="Nome" required="true">
+            <input type="text" class="form-control" formControlName="nome">
+          </app-field>
+        </div>
+        <!-- Fim nome -->
+
+      </div>
+      <!-- Fim primeira linha -->
+
+      <!-- Endereco  -->
+      <div formGroupName="endereco">
+
+        <!-- Segunda linha -->
+        <div class="row">
+
+          <!-- Logradouro -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Logradouro" required="true">
+              <input type="text" class="form-control" formControlName="logradouro">
+            </app-field>
+          </div> <!-- Fim logradouro -->
+
+          <!-- Complemento -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Complemento" required="true">
+              <input type="text" class="form-control" formControlName="complemento">
+            </app-field>
+          </div> <!-- Fim complemento -->
+
+          <!-- Bairro -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Bairro" required="true">
+              <input type="text" class="form-control" formControlName="bairro">
+            </app-field>
+          </div> <!-- Fim bairro -->
+
+        </div>
+        <!-- Fim segunda linha -->
+
+        <!-- Terceira linha -->
+        <div class="row">
+
+          <!-- Cidade -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Cidade" required="true">
+              <input type="text" class="form-control" formControlName="cidade">
+            </app-field>
+          </div> <!-- Fim cidade -->
+
+          <!-- Estado -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Estado" required="true">
+              <input type="text" class="form-control" formControlName="estado">
+            </app-field>
+          </div> <!-- Fim estado -->
+
+          <!-- Pais -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Pais" required="true">
+              <select class="form-control" formControlName="pais" [compareWith]="compareFn">
+                <option></option>
+                <option *ngFor="let pais of paises" [ngValue]="pais">{{ pais.nome }}</option>
+              </select>
+            </app-field>
+          </div> <!-- Fim pais -->
+
+        </div>
+        <!-- Fim terceira linha -->
+
+      </div>
+      <!-- Fim enderco -->
+
+    </div>
+    <!-- Fim panel-body -->
+    <div class="panel-footer">
+
+      <!-- Botão para editar -->
+      <button class="btn btn-primary mr-1" [routerLink]="['/garagem/editar', garagem.id]" *ngIf="garagemForm.disabled">
+        <i class="fa fa-edit"></i> Editar
+      </button>
+
+      <!-- Botão para salvar -->
+      <button class="btn btn-success mr-1" *ngIf="!garagemForm.disabled">
+        <i class="fa fa-paper-plane"></i> Salvar
+      </button>
+
+      <!-- Botão para lista -->
+      <button class="btn btn-light" routerLink="/garagem">
+        Cancelar
+      </button>
+
+    </div>
+    <!-- Fim panel-footer -->
+  </div>
+  <!-- Fim panel -->
+</form>
+<!-- Fim form -->

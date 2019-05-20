@@ -1,0 +1,93 @@
+<!-- Título da página -->
+<h3 class="page-title">Dados prinicipais do Carro</h3>
+
+<!-- Formulário -->
+<form [formGroup]="carroForm" (submit)="onSave()">
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <!-- Primeira linha -->
+      <div class="row">
+
+        <!-- Fabricante -->
+        <div class="col-md-6 col-lg-4">
+          <app-field label="Fabricante" required="true">
+            <input type="text" class="form-control" formControlName="fabricante">
+          </app-field>
+        </div>
+        <!-- Fim fabricante -->
+
+        <!-- Descrição -->
+        <div class="col-md-6 col-lg-4">
+          <app-field label="Descrição" required="true">
+            <input type="text" class="form-control" formControlName="descricao">
+          </app-field>
+        </div>
+        <!-- Fim descricao -->
+
+        <!-- Valor -->
+        <div class="col-md-6 col-lg-4">
+          <app-field label="Modelo" required="true">
+            <input type="text" class="form-control" formControlName="modelo">
+          </app-field>
+        </div>
+        <!-- Fim valor -->
+
+      </div>
+      <!-- Fim primeira linha -->
+
+      <!-- Segunda linha -->
+      <div class="row">
+
+        <!-- Versão -->
+        <div class="col-md-6 col-lg-4">
+            <app-field label="Versão" required="true">
+              <input type="text" class="form-control" formControlName="versao">
+            </app-field>
+          </div>
+          <!-- Fim versao -->
+
+          <!-- Cor -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Cor" required="true">
+              <input type="text" class="form-control" formControlName="cor">
+            </app-field>
+          </div>
+          <!-- Fim cor -->
+
+          <!-- Valor -->
+          <div class="col-md-6 col-lg-4">
+            <app-field label="Valor" required="true">
+              <input type="text" class="form-control" formControlName="valor">
+            </app-field>
+          </div>
+          <!-- Fim valor -->
+
+      </div>
+      <!-- Fim segunda linha -->
+
+    </div>
+    <!-- Fim panel-body -->
+    <div class="panel-footer">
+
+      <!-- Botão para editar -->
+      <button class="btn btn-primary mr-1" [routerLink]="['/carro/editar', carro.id]" *ngIf="carroForm.disabled">
+        <i class="fa fa-edit"></i> Editar
+      </button>
+
+      <!-- Botão para salvar -->
+      <button class="btn btn-success mr-1" *ngIf="!carroForm.disabled">
+        <i class="fa fa-paper-plane"></i> Salvar
+      </button>
+
+      <!-- Botão para lista -->
+      <button class="btn btn-light" routerLink="/carro">
+        Cancelar
+      </button>
+
+    </div>
+    <!-- Fim panel-footer -->
+  </div>
+  <!-- Fim panel -->
+</form>
+<!-- Fim form -->
